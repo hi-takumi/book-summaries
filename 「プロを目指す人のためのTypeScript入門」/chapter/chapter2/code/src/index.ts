@@ -91,13 +91,136 @@ console.log(f || f);
 
 //2.4.6 論理演算子(2) 一般形と短絡評価
 //真偽値以外にもあらゆるオペランドに対して使うことができる。
-import { createInterface } from "readline";
-const rl = createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-rl.question("名前を入力してください:", (name) => {
-  const displayName = name || "名無し";
-  console.log(`こんにちは、${displayName}さん`);
-  rl.close();
-});
+// import { createInterface } from "readline";
+// const rl = createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
+// rl.question("名前を入力してください:", (name) => {
+//   const displayName = name || "名無し";
+//   console.log(`こんにちは、${displayName}さん`);
+//   rl.close();
+// });
+
+//条件演算子
+//三項演算子とも呼ばれる
+// import { createInterface } from "readline";
+// const rl = createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
+// rl.question("数値を入力してください：", (line) => {
+//   const num = Number(line);
+//   const message =
+//     0 <= num && num < 100
+//       ? `${num}は0以上100未満です`
+//       : `${num}は0以上100未満ではありません。`;
+//   console.log(message);
+//   rl.close();
+// });
+
+//代入演算子
+//constで定義された変数には代入演算子は使えない
+// import { createInterface } from "readline";
+// const rl = createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
+// rl.question("数値を入力してください:", (name) => {
+//     if(name===""){
+//         name="名無し";
+//     }
+//     console.log(`こんにちは、${name}さん`);
+//     rl.close;
+// })
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//2.5基本的な制御構文
+//2.5.1 条件分岐(1) if文の基本
+// if (userName === "") userName = "名無し";
+
+//2.5.3　条件分岐(2) elseを使う
+//条件式がtrueなら1を実行し、falseなら文2を実行する
+// if (userName !== "") {
+//   console.log("ちゃんと名前があってえらい");
+// } else {
+//   console.log("名前を入力してください");
+//   userName = "名無し";
+// }
+
+//2.5.4 switch文
+// import { createInterface } from "readline";
+// const rl = createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
+// rl.question("コマンドを入力してください：", (name) => {
+//   switch (name) {
+//     case "greet":
+//       console.log("こんにちは");
+//       break;
+//     case "cat":
+//       console.log("あなたは猫派ですか");
+//       console.log("私は犬派です");
+//       break;
+//     default:
+//       console.log(`コマンド「${name}」を認識できませんでした。`);
+//   }
+//   rl.close();
+// });
+
+//2.5.5 while文によるループ
+// let sum = 0;
+// let i = 1;
+// while (true) {
+//   if (i > 100) {
+//     break;
+//   }
+//   sum += i;
+//   i++;
+// }
+
+// let ii = 1;
+// while (ii <= 100) {
+//   ii++;
+//   if (ii % 2 === 1) {
+//     continue;
+//   }
+//   console.log(ii);
+// }
+
+//2.5.6 for文によるループ
+// let sum = 0;
+// for (let i: number = 1; i <= 100; i++) {
+//   sum += 1;
+// }
+// console.log(sum);
+
+/////////////////////////////////////////////////////////////////////////////////////////
+//2.6 力試し
+// for (let i: number = 1; i <= 100; i++) {
+//   if (i % 3 !== 0 && i % 5 !== 0) {
+//     console.log(i);
+//   } else if (i % 3 === 0 && i % 5 !== 0) {
+//     console.log("Fizz");
+//   } else if (i % 3 !== 0 && i % 5 === 0) {
+//     console.log("Buzz");
+//   } else if (i % 3 === 0 && i % 5 === 0) console.log("FizzBuzz");
+// }
+
+let result = "";
+for (let i = 1; i <= 100; i++) {
+  if (i > 1) {
+    result += "";
+  }
+  if (i % 3 === 0 && i % 5 === 0) {
+    result += "FizzBuzz";
+  } else if (i % 3 === 0) {
+    result += "Fizz";
+  } else if (i % 5 === 0) {
+    result += "Buzz";
+  } else {
+    result += String(i);
+  }
+}
+console.log(result);

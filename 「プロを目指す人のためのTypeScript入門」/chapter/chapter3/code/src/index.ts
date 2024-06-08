@@ -216,3 +216,56 @@ console.log(obj17.baz);
 const num: number = 0;
 type T = typeof num;
 const foo1: T = 123;
+
+//3.3 部分型関係
+//3.3.1 部分型とは
+type FooBar = {
+  foo: string;
+  bar: number;
+};
+type FooBarBaz = {
+  foo: string;
+  bar: number;
+  baz: boolean;
+};
+const obj18: FooBarBaz = {
+  foo: "h1",
+  bar: 1,
+  baz: false,
+};
+const obj19: FooBar = obj18;
+
+//3.3.2　プロパティの包含関係による部分型関係の発生
+//HumanはAnimalの部分型という表現になる
+type Animal = {
+  age: number;
+};
+type Human = {
+  age: number;
+  name: string;
+};
+
+type AnimalFamily = {
+  familyName: string;
+  mother: Animal;
+  father: Animal;
+  child: Animal;
+};
+type HumanFamily = {
+  familyName: string;
+  mother: Human;
+  father: Human;
+  child: Human;
+};
+
+//3.3.3 余剰プロパティに対する型エラーについて
+type User = {
+  name: string;
+  age: number;
+};
+const obj20 = {
+  name: "uhyo",
+  age: 26,
+  telNumber: "09012345678",
+};
+const u: User = obj20;

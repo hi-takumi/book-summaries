@@ -105,3 +105,50 @@ const obj12 = {
     ...obj11,
 };
 console.log(obj12);
+//3.1.6 オブジェクトはいつ同じなのか
+//オブジェクトをほかの変数に入れるという操作はオブジェクトをコピーしていないので、同じオブジェクトが複数の変数に入る結果となる
+// const foo = { num: 1234 };
+// const bar = foo;
+// console.log(bar.num); //1234と表示される
+// bar.num = 0;
+// console.log(foo.num); // 0と表示される
+//スプレッド構文を使うとオブジェクトがコピーされ、違うオブジェクトを参照するようになる
+const foo = {
+    num: 1234,
+};
+const bar = { ...foo };
+console.log(bar.num);
+bar.num = 0;
+console.log(foo.num);
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//3.2 オブジェクトの型
+//3.1.1 オブジェクト型の記法
+const obj13 = {
+    foo: 123,
+    bar: "hello",
+};
+const obj14 = {
+    foo: 123,
+    bar: "hello",
+};
+const obj15 = {
+    foo: 0,
+    bar: "string",
+};
+const data = {
+    apple: 220,
+    coffee: 120,
+    bento: 500,
+};
+data.chicken = 250;
+const obj16 = {
+    foo: false,
+    bar: true,
+};
+const obj17 = {
+    foo: true,
+    bar: false,
+    baz: 1234,
+};
+console.log(obj16.baz);
+console.log(obj17.baz);

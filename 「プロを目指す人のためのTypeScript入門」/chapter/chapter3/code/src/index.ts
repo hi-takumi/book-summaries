@@ -150,5 +150,69 @@ const obj13: {
   bar: "hello",
 };
 
-//オブジェクト型の方チェックと安全性
-//
+//3.2.3type文で方に別名をつける
+//型宣言を後に書いても問題ない
+type FooBarObj = {
+  foo: number;
+  bar: string;
+};
+const obj14: FooBarObj = {
+  foo: 123,
+  bar: "hello",
+};
+
+//3.2.4interface宣言でオブジェクト型を宣言する
+interface FooBarObj1 {
+  foo: number;
+  bar: string;
+}
+const obj15: FooBarObj1 = {
+  foo: 0,
+  bar: "string",
+};
+
+//任意のプロパティ名を許容する方（インデックスシグネチャ）
+//[キー名: string]:型 任意の名前のプロパティが型を持つという意味になる
+type PriceData = {
+  [key: string]: number;
+};
+const data: PriceData = {
+  apple: 220,
+  coffee: 120,
+  bento: 500,
+};
+data.chicken = 250;
+// data.弁当="foo";　これはコンパイルエラーになる
+
+//3.2.6 オプショナルなプロパティの宣言
+//オプショナルなプロパティとはあってもなくてもよいプロパティのこと
+type MyObj = {
+  foo: boolean;
+  bar: boolean;
+  baz?: number;
+};
+const obj16: MyObj = {
+  foo: false,
+  bar: true,
+};
+const obj17: MyObj = {
+  foo: true,
+  bar: false,
+  baz: 1234,
+};
+console.log(obj16.baz);
+console.log(obj17.baz);
+
+//3.2.7　読み取り専用プロパティの宣言
+// type MyObj2 = {
+//   readonly foo: number;
+// };
+// const obj18: MyObj2 = {
+//   foo: 123,
+// };
+// object.foo = 0;
+
+//3.2.8 typeofキーワードで変数の型を得る
+const num: number = 0;
+type T = typeof num;
+const foo1: T = 123;

@@ -152,3 +152,73 @@ const obj17 = {
 };
 console.log(obj16.baz);
 console.log(obj17.baz);
+//3.2.7　読み取り専用プロパティの宣言
+// type MyObj2 = {
+//   readonly foo: number;
+// };
+// const obj18: MyObj2 = {
+//   foo: 123,
+// };
+// object.foo = 0;
+//3.2.8 typeofキーワードで変数の型を得る
+const num = 0;
+const foo1 = 123;
+const obj18 = {
+    foo: "h1",
+    bar: 1,
+    baz: false,
+};
+const obj19 = obj18;
+const obj20 = {
+    name: "uhyo",
+    age: 26,
+    telNumber: "09012345678",
+};
+const u = obj20;
+//3.4.2 型引数を持つ型を使用する
+const obj21 = {
+    mother: 0,
+    father: 100,
+    child: "1000",
+};
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//3.5 配列
+//3.5.1　配列リテラルで配列を作成する
+const arr = [0, 123, -456 * 10];
+console.log(arr);
+//配列は複数種類の型を同時に入れることができる
+const arr2 = [100, "文字列", false];
+//スプレッド構文が使用可能
+const arr3 = [4, 5, 6];
+const arr4 = [1, 2, 3, ...arr3];
+console.log(arr4);
+//3.5.2 配列の要素にアクセスする
+console.log(arr[0]);
+console.log(arr[1]);
+//代入する
+const arr5 = [0, 123, -456 * 10];
+console.log(arr5);
+arr5[1] = 5400;
+console.log(arr5);
+//3.5.3 配列型の記法
+const arr6 = [1, 110.1];
+//Array
+const arr7 = [false, true];
+const arr8 = [
+    { name: "山田さん" },
+    { name: "田中さん" },
+    { name: "鈴木さん" },
+];
+//3.5.4　readonly配列型
+//読み取り専用配列型
+// const arr9: readonly number[] = [1, 10, 100];
+// arr9[1]=-500;
+//3.5.5 配列の機能を使う
+const arr10 = [1, 10, 100];
+arr10.push(1000);
+console.log(arr10);
+//3.5.6 for of によるループ
+const arr11 = [1, 10, 100];
+for (const elm of arr11) {
+    console.log(elm);
+}

@@ -441,7 +441,44 @@
 // console.log(restObj);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-//3.7そのほかの組み込みオブジェクト
-//3.7.1　Dateオブジェクト
-const d = new Date();
-console.log(d);
+// //3.7そのほかの組み込みオブジェクト
+// //3.7.1　Dateオブジェクト
+// const d = new Date();
+// console.log(d);
+
+// //3.7.2　正規表現オブジェクト
+// const r = /ab+c/;
+// console.log(r.test("abbbbc"));
+// console.log(r.test("Hello, abc world"));
+// console.log(r.test("ABC"));
+// console.log(r.test("こんにちは"));
+
+// //3.7.4 Mapオブジェクト/Setオブジェクト
+// const map: Map<string, number> = new Map();
+// map.set("foo", 1234);
+// console.log(map.get("foo"));
+// console.log(map.get("bar"));
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+type User = {
+  name: string;
+  age: number;
+  premiumUser: boolean;
+};
+const data: string = `
+uhyo,26,1
+John Smith,17,0
+Mary Sue,14,1
+`;
+
+
+
+for (const user of users) {
+  if (user.premiumUser) {
+    console.log(`${user.name}(${user.age})はプレミアムユーザーです。`);
+  } else {
+    console.log(
+      `${user.name}(${user.age})はプレミアムユーザーではありません。`
+    );
+  }
+}

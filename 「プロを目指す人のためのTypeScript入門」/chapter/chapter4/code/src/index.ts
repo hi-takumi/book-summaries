@@ -203,6 +203,152 @@
 //   }
 // };
 
-//4.2.3 返り値の型注釈は省略すべきか
+// //4.2.3 返り値の型注釈は省略すべきか
 
-//4.2.4 引数の型注釈が省略可能な場合
+// //4.2.4 引数の型注釈が省略可能な場合
+
+// //4.2.5 コールシグネチャによる関数型の表現
+// type MyFunc = {
+//   isUsed?: boolean;
+//   (arg: number): void;
+// };
+// const double: MyFunc = (arg: number) => {
+//   console.log(arg * 2);
+// };
+// double.isUsed = true;
+// console.log(double.isUsed);
+// double(1000);
+
+// /////////////////////////////////////////////////////////////////////
+// //4.3 関数型の部分型関係
+// //4.3.1 返り値による部分型関係
+// type HasName = {
+//   name: string;
+// };
+// type HasNameAndAge = {
+//   name: string;
+//   age: number;
+// };
+
+// const fromAge = (age: number): HasNameAndAge => ({
+//   name: "John Smith",
+//   age,
+// });
+
+// const f: (age: number) => HasName = fromAge;
+// const obj: HasName = f(100);
+
+// //4.3.2 引数の型による部分型関係
+// type HasName = {
+//   name: string;
+// };
+// type HasNameAndAge = {
+//   name: string;
+//   age: number;
+// };
+// const showName = (obj: HasName) => {
+//   console.log(obj.name);
+// };
+// const g: (obj: HasNameAndAge) => void = showName;
+// g({
+//   name: "uhyo",
+//   age: 26,
+// });
+
+// ////////////////////////////////////////////////////////////////
+// //4.4ジェネリクス
+// //4.4.1 関数の型引数とは
+// function repeat<T>(element: T, length: number): T[] {
+//   const result: T[] = [];
+//   for (let i = 0; i < length; i++) {
+//     result.push(element);
+//   }
+//   return result;
+// }
+// console.log(repeat<string>("a", 5));
+// console.log(repeat<number>(123, 3));
+
+// //4.4.2　関数の型引数を宣言する方法
+// const repeat = function <T>(element: T, length: number): T[] {
+//   const result: T[] = [];
+//   for (let i = 0; i < length; i++) {
+//     result.push(element);
+//   }
+//   return result;
+// };
+
+// const repeat = <T>(element: T, length: number): T[] => {
+//   const result: T[] = [];
+//   for (let i = 0; i < length; i++) {
+//     result.push(element);
+//   }
+//   return result;
+// };
+
+// const utils = {
+//   repeat<T>(element: T, length: number): T[] {
+//     const result: T[] = [];
+//     for (let i = 0; i < length; i++) {
+//       result.push(element);
+//     }
+//     return result;
+//   },
+// };
+
+// const pair = <Left, Right>(left: Left, right: Right): [Left, Right] => [
+//   left,
+//   right,
+// ];
+// const p = pair<string, number>("uhyo", 26);
+
+// const repeat = <
+//   T extends {
+//     name: string;
+//   }
+// >(
+//   element: T,
+//   length: number
+// ): T[] => {
+//   const result: T[] = [];
+//   for (let i = 0; i < length; i++) {
+//     result.push(element);
+//   }
+//   return result;
+// };
+
+// type hasNameAndAge = {
+//   name: string;
+//   age: number;
+// };
+// console.log(
+//   repeat<HasNameAndAge>(
+//     {
+//       name: "uhyo",
+//       age: 26,
+//     },
+//     3
+//   )
+// );
+
+// //4.4.4 型引数を持つ関数型
+// const repeat = function <T>(element: T, length: number): T[] {
+//   const result: T[] = [];
+//   for (let i = 0; i < length; i++) {
+//     result.push(element);
+//   }
+//   return result;
+// };
+
+// //上の内容を書き換える
+// type Func = <T>(arg: T, num: number) => T[];
+// const repeat: Func = (element, length) => {
+//   const result = [];
+//   for (let i = 0; i < length; i++) {
+//     result.push(element);
+//   }
+//   return result;
+// };
+
+//////////////////////////////////////////////////////////////////////
+//4.5 変数とスコープと関数
+//4.5.1 変数のスコープとは
